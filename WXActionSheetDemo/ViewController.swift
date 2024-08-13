@@ -99,12 +99,13 @@ class ViewController: UITableViewController {
     }
     
     private func showButtonsWithImage() {
-        let actionSheet = WXActionSheet(cancelButtonTitle: "取消")
+        let actionSheet = WXActionSheet(cancelButtonTitle: nil)
         let videoItem = WXActionSheetItem(title: "视频聊天") { _ in
             
         }
         videoItem.iconImage = UIImage(named: "video_chat_24x24_")
         videoItem.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        videoItem.contentHorizontalAlignment = .left
         actionSheet.add(videoItem)
         
         let audioItem = WXActionSheetItem(title: "语音聊天") { _ in
@@ -112,6 +113,7 @@ class ViewController: UITableViewController {
         }
         audioItem.iconImage = UIImage(named: "audio_chat_24x24_")
         audioItem.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        audioItem.contentHorizontalAlignment = .left
         actionSheet.add(audioItem)
         
         actionSheet.show()

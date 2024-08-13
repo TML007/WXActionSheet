@@ -17,7 +17,8 @@ class WXActionSheetScrollView: UIScrollView {
         for (index, item) in items.enumerated() {
             let itemView = WXScrollActionSheetItemView(item: item)
             itemView.delegate = itemDelegate
-            itemView.frame.origin = CGPoint(x: 68.0 * CGFloat(index), y: 0)
+            itemView.frame = CGRect(origin: CGPoint(x: 68.0 * CGFloat(index), y: 0), size: CGSize(width: 60, height: 90))
+            itemView.backgroundColor = .white
             addSubview(itemView)
         }
         contentSize = CGSize(width: 24 + 68.0 * CGFloat(items.count), height: bounds.height)

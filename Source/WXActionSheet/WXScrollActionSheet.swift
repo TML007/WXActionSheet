@@ -7,7 +7,7 @@
 
 import UIKit
 
-@objc public protocol WXScrollActionSheetDelegate: class {
+@objc public protocol WXScrollActionSheetDelegate: AnyObject {
     
     @objc optional func scrollActionSheet(_ scrollActionSheet: WXScrollActionSheet, didSelectItem item: WXScrollActionSheetItem)
     
@@ -67,11 +67,13 @@ public class WXScrollActionSheet: UIView {
     
     private func commonInit() {
 
-        backgroundView = UIView()
+        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        backgroundView.backgroundColor = .black
         backgroundView.alpha = 0.0
         addSubview(backgroundView)
         
         containerView = UIView()
+        containerView.backgroundColor = .white
         addSubview(containerView)
         
         titleLabel = UILabel()
@@ -127,10 +129,10 @@ public class WXScrollActionSheet: UIView {
 
         containerView.frame = CGRect(x: 0, y: bounds.height, width: bounds.width, height: offsetY)
 
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        blurView.frame = containerView.bounds
-        containerView.addSubview(blurView)
-        containerView.sendSubviewToBack(blurView)
+//        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+//        blurView.frame = containerView.bounds
+//        containerView.addSubview(blurView)
+//        containerView.sendSubviewToBack(blurView)
     }
     
     public func show() {
@@ -141,7 +143,7 @@ public class WXScrollActionSheet: UIView {
             win.addSubview(self)
         }) { _ in
             UIView.animate(withDuration: 0.3) {
-                self.backgroundView.alpha = 1.0
+                self.backgroundView.alpha = 0.3
                 let y = self.bounds.height - self.containerView.frame.height
                 self.containerView.frame.origin = CGPoint(x: 0, y: y)
             }

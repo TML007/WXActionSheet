@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol WXScrollActionSheetItemViewDelegate: class {
+public protocol WXScrollActionSheetItemViewDelegate: AnyObject {
     
     func scrollActionSheetItemView(_ itemView: WXScrollActionSheetItemView,
                                    didTappedWithItem item: WXScrollActionSheetItem)
@@ -31,8 +31,10 @@ public class WXScrollActionSheetItemView: UIView {
         titleLabel.textColor = item.titleColor
         titleLabel.font = UIFont.systemFont(ofSize: 11)
         titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
         
         iconButton = UIButton(type: .custom)
+        iconButton.setImage(item.iconImage, for: .normal)
         
         super.init(frame: .zero)
         
@@ -55,10 +57,10 @@ public class WXScrollActionSheetItemView: UIView {
                                   width: 56,
                                   height: 56)
         
-        titleLabel.frame = CGRect(x: -2,
-                                  y: 64,
-                                  width: bounds.width + 4,
-                                  height: bounds.height - 64)
+        titleLabel.frame = CGRect(x: 0,
+                                  y: 60,
+                                  width: bounds.width,
+                                  height: bounds.height - 60)
     }
     
     @objc func onTap() {

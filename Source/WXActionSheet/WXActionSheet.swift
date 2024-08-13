@@ -177,9 +177,12 @@ extension WXActionSheet {
             button.setBackgroundImage(highlightBackgroundImage, for: .highlighted)
             button.setTitle(item.title, for: .normal)
             button.setImage(item.iconImage, for: .normal)
-            button.imageEdgeInsets = item.imageEdgeInsets
-            button.titleEdgeInsets = isLastItem ? UIEdgeInsets(top: -safeInsets.bottom/2, left: 0, bottom: safeInsets.bottom/2, right: 0) : item.titleEdgeInsets
+            button.setImage(item.iconImage, for: .highlighted)
+            button.imageEdgeInsets = isLastItem ? UIEdgeInsets(top: -safeInsets.bottom/2, left: 0, bottom: safeInsets.bottom/2, right: 0) : item.imageEdgeInsets
+            button.titleEdgeInsets = isLastItem ? UIEdgeInsets(top: -safeInsets.bottom/2, left: 10, bottom: safeInsets.bottom/2, right: 0) : item.titleEdgeInsets
             button.titleLabel?.font = item.font
+            button.contentHorizontalAlignment = item.contentHorizontalAlignment
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
             let titleColor: UIColor
             if item.type == .destructive {
                 titleColor = style.appearance.destructiveButtonTitleColor

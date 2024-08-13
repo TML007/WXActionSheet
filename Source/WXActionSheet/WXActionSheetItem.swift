@@ -24,7 +24,7 @@ public class WXActionSheetItem {
     
     public var titleColor: UIColor?
     
-    public var font: UIFont = UIFont.systemFont(ofSize: 17)
+    public var font: UIFont = UIFont.systemFont(ofSize: 16)
     
     public var desc: String?
     
@@ -35,6 +35,8 @@ public class WXActionSheetItem {
     public var imageEdgeInsets: UIEdgeInsets = .zero
     
     public var type: ItemType = .default
+    ///仅desc为空时生效
+    public var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment = .center
     
     public var handler: WXActionSheetHandler? = nil
     
